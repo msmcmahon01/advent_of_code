@@ -39,15 +39,18 @@ int main() {
 			flag = 0;
 		}
 
-        min = get_min(l, w, h);
+		min = get_min(l, w, h);
 
 		paper += (2 * l * w) + (2 * w * h) + (2 * h * l) + min;
 
-        if (min == (l * w)) ribbon += (2 * l + 2 * w);
-        else if (min == (w * h)) ribbon += (2 * w + 2 * h);
-        else if (min == (h * l)) ribbon += (2 * h + 2 * l);
+		if (min == (l * w))
+			ribbon += (2 * l + 2 * w);
+		else if (min == (w * h))
+			ribbon += (2 * w + 2 * h);
+		else if (min == (h * l))
+			ribbon += (2 * h + 2 * l);
 
-        ribbon += (l * w * h);
+		ribbon += (l * w * h);
 	}
 
 	cout << "Total amount of wrapping paper needed: " << paper << endl;
