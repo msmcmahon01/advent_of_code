@@ -12,6 +12,8 @@ class House {
 
 	House(int numPresents, bool isHit) : presents(numPresents), hit(isHit) {}
 
+	~House() {};
+
 	bool been_hit() {
 		if (this->presents >= 1) this->hit = true;
 	}
@@ -36,17 +38,20 @@ int main() {
 		return 1;
 	}
 
-	int def_size_x = 200, def_size_y = 200;
+	int def_size_x, def_size_y;
+	def_size_x = def_size_y = 200;
 	House** houseArr = new House*[def_size_y];
 
 	for (int i = 0; i < def_size_y; ++i) {
 		houseArr[i] = new House[def_size_x];
 	}
 
-	int pos_x = def_size_x/2, pos_y = def_size_y/2;
+	int pos_x = def_size_x / 2, pos_y = def_size_y / 2;
+
 	++houseArr[pos_y][pos_x].presents;
 	houseArr[pos_y][pos_x].been_hit();
-	int total = 0;
+
+	int total = 1;
 	string line;
 
 	while (getline(inputFile, line)) {
