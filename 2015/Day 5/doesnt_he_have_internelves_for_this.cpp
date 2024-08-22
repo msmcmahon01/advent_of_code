@@ -6,6 +6,8 @@ using namespace std;
 static bool test1(string line);
 static bool test2(string line);
 static bool test3(string line);
+static bool test4(string line);
+static bool test5(string line);
 
 int main() {
 	ifstream inputFile("input.txt");
@@ -15,17 +17,21 @@ int main() {
 		return 1;
 	}
 
+	bool part2 = true; // Control part 1 and part 2
 	string line;
 	int total = 0;
-	bool one, two, three;
 
-	while (getline(inputFile, line)) {
-		one = test1(line);
-		two = test2(line);
-		three = test3(line);
-
-		if (one && two && three) {
-			++total;
+	if (!part2) {
+		while (getline(inputFile, line)) {
+			if (test1(line) && test2(line) && test3(line)) {
+				++total;
+			}
+		}
+	} else {
+		while (getline(inputFile, line)) {
+			if (test4(line) && test5(line)) {
+				++total;
+			}
 		}
 	}
 
@@ -76,4 +82,33 @@ static bool test3(string line) {
 
 	cout << "TEST 3 PASS: " << line << endl;
 	return true;
+}
+
+static bool test4(string line) {
+	for (int i = 0; i < line.length() - 3; ++i) {
+		for (int j = i + 2; j < line.length() - 1; ++j) {
+			auto combined1 = string(1, line[i]) + line[i + 1];
+			auto combined2 = string(1, line[j]) + line[j + 1];
+
+			if (combined1 == combined2) {
+				cout << combined1 << " " << combined2 << endl;
+				cout << "TEST 4 PASS: " << line << endl;
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+static bool test5(string line) {
+	for (int i = 0; i < line.length(); ++i) {
+		if (line[i] == line[i + 2]) {
+			cout << line[i] << line[i + 1] << line[i + 2] << endl;
+			cout << "TEST 5 PASS: " << line << endl;
+			return true;
+		}
+	}
+
+	return false;
 }
