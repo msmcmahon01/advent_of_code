@@ -5,9 +5,9 @@ using namespace std;
 
 const int grid_size = 1000;
 
+static void toggle(bool lightArr[grid_size][grid_size], string line);
 static void turn_on(bool lightArr[grid_size][grid_size], string line);
 static void turn_off(bool lightArr[grid_size][grid_size], string line);
-static void toggle(bool lightArr[grid_size][grid_size], string line);
 
 int main() {
 	ifstream inputFile("input.txt");
