@@ -43,6 +43,11 @@ int main() {
 
 	cout << "Total brightness: " << total2 << endl;
 
+    for (int i = 0; i < grid_size; ++i) {
+        delete[] lightArr2[i];
+    }
+    delete[] lightArr2;
+
 	return 0;
 }
 
